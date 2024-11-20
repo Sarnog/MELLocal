@@ -1,0 +1,7 @@
+{
+  "name": "Mitsubishi Local",
+  "render_readme": true,
+  "domains": ["climate"],
+  "homeassistant": "2023.12.0",
+  "iot_class": "Local Polling"
+}

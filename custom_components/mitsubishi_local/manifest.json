@@ -1,0 +1,11 @@
+{
+  "domain": "mitsubishi_local",
+  "name": "Mitsubishi AC Local Control",
+  "documentation": "https://github.com/Sarnog/LocalMEL",
+  "issue_tracker": "https://github.com/Sarnog/LocalMEL/issues",
+  "dependencies": [],
+  "codeowners": ["@Sarnog"],
+  "requirements": ["pycryptodome"],
+  "version": "1.0.0",
+  "iot_class": "local_polling"
+}
