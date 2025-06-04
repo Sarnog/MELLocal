@@ -71,3 +71,4 @@ def test_encrypt_decrypt_short_payload():
     assert encrypted != payload
     decrypted = api._decrypt_payload(encrypted)
     assert decrypted == payload
+
