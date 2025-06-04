@@ -4,6 +4,7 @@ import logging
 import socket
 from typing import Dict, Any
 from Crypto.Cipher import AES
+from Crypto.Util.Padding import pad, unpad
 from .const import (
     DEFAULT_PORT,
     PACKET_HEADER,
@@ -36,17 +37,19 @@ class MitsubishiAPI:
         """Encrypt the payload using AES."""
         if not self._encryption_key:
             return payload
-        
+
         cipher = AES.new(self._encryption_key, AES.MODE_ECB)
-        return cipher.encrypt(payload)
+        padded = pad(payload, AES.block_size)
+        return cipher.encrypt(padded)
 
     def _decrypt_payload(self, payload: bytes) -> bytes:
         """Decrypt the payload using AES."""
         if not self._encryption_key:
             return payload
-        
+
         cipher = AES.new(self._encryption_key, AES.MODE_ECB)
-        return cipher.decrypt(payload)
+        decrypted = cipher.decrypt(payload)
+        return unpad(decrypted, AES.block_size)
 
     async def send_command(self, command: bytes) -> bytes:
         """Send command to the AC unit and receive response."""
