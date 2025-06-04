@@ -1,16 +1,12 @@
-diff --git a/custom_components/mitsubishi_local/connection.py b/custom_components/mitsubishi_local/connection.py
-index a412b7af2956c9a7f00d6987ffa60aede955474b..93ea9e95bff8b387390315ab981ccb6e5aa09257 100644
-    b/custom_components/mitsubishi_local/connection.py
-@@ -1,60 +1,67 @@
- """Connection handler for Mitsubishi AC units."""
- import asyncio
- import logging
--import socket
- from typing import Optional
+"""Connection handler for Mitsubishi AC units."""
+
+import asyncio
+import logging
+from typing import Optional
  
- _LOGGER = logging.getLogger(__name__)
+_LOGGER = logging.getLogger(__name__)
  
- class MelConnection:
+class MelConnection:
      """Handles the connection to a Mitsubishi AC unit."""
      
      def __init__(self, host: str, port: int = 8317, timeout: float = 5.0):
@@ -64,7 +60,6 @@ index a412b7af2956c9a7f00d6987ffa60aede955474b..93ea9e95bff8b387390315ab981ccb6e
  
                  if not response:
                      raise ConnectionError("No response received")                    
- 
                  return response
              except Exception as e:
                  _LOGGER.error("Error sending command: %s", e)
